@@ -43,14 +43,48 @@
         </div>
     </nav>
 
-    // TAB 1            TAB 1
-    // =====================
+    <!-- TAB 1            TAB 1
+       =====================  -->
 
     <div ng-show="tabs.isSet(1)">
         <div class="events" ng-controller="TabsDemoCtrl">
-            <p>Uue ürituse lisamiseks sisestage kõigepealt andmed</p>
+            <h4>Nimekirjas on toodud kõik sellel aastal toimvad üritused<small> Soovitame osaleda!</small></h4>
+
 
             <p id="demo"></p>
+
+            <div class="list-group">
+
+                <a href ng-click="tabs.setTab(2)" class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-3"><img src="images/party1.jpg" alt="Birth1" class="img-thumbnail"></div>
+                            <div class="col-md-9"> <h4>Mihkli Sünnipäev <span class="label label-primary">22</span></h4>
+                                <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 23. aprill 2015      <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> TTÜ Raamatukogu<hr/>
+                                Lorem ipsum dolor sit amet.
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-3"><img src="images/party2.jpg" alt="Birth1" class="img-thumbnail"></div>
+                        <div class="col-md-9"> <h4>Mari Majapidu <span class="label label-primary">Peab osalema!</span></h4>
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 12. mai 2015      <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Suve tn 5, Tallinn<hr/>
+                            Lorem ipsum dolor sit amet.
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-3"><img src="images/party3.jpg" alt="Birth1" class="img-thumbnail"></div>
+                        <div class="col-md-9"> <h4>Ööklubi Prive sünnipäev <span class="label label-primary">12</span></h4>
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 25. juuni 2015      <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Raekoja plats 5, Tallinn<hr/>
+                            Lorem ipsum dolor sit amet.
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!--
             <tabset justified="true">
                 <tab heading="Juhan 20">
 
@@ -115,7 +149,7 @@
                                         <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
                                         <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
                                         <div ng-show="selected">Selection from a modal: {{ selected }}</div>
-                                    </div>-->
+                                    </div>
                             </accordion-group>
                             <accordion-group is-open="status.open">
                                 <accordion-heading>
@@ -156,17 +190,18 @@
                     </div>
                 </tab>
             </tabset>
+        -->
         </div>
 
     </div>
 
-    // 2 TAB 2        2 TAB 2
-    // ======================
+    <!-- 2 TAB 2        2 TAB 2
+    // ====================== -->
 
     <div ng-show="tabs.isSet(2)">
 
         <div class="row">
-            <div class="navigator" ng-controller="CollapseDemoCtrl">
+            <div class="events" ng-controller="CollapseDemoCtrl">
                 <div class="col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -234,7 +269,7 @@
                 </div>
             </div>
         </div>
-        // END TAB 2
+        <!-- END TAB 2 -->
     </div>
 
 </section>

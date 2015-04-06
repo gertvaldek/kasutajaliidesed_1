@@ -1,0 +1,251 @@
+<html ng-app="ui.bootstrap.demo">
+
+<head>
+    <title>Sünnipäevad</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    <script src='js/lodash.js'></script>
+    <script src='js/index.js'></script>
+    <script src='js/angular-google-maps.min.js'></script>
+</head>
+
+<body>
+<section class="tabs" ng-controller="TabsController as tabs">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li role="presentation"><a href ng-click="tabs.setTab(1)">Üritused</a>
+                    </li>
+                    <li role="presentation"><a href ng-click="tabs.setTab(2)">Loo uus üritus</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="login.html">Logi välja</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    // TAB 1            TAB 1
+    // =====================
+
+    <div ng-show="tabs.isSet(1)">
+        <div class="events" ng-controller="TabsDemoCtrl">
+            <p>Uue ürituse lisamiseks sisestage kõigepealt andmed</p>
+
+            <p id="demo"></p>
+            <tabset justified="true">
+                <tab heading="Juhan 20">
+
+                    <div ng-controller="AccordionDemoCtrl">
+                        <hr/>
+
+
+                        <accordion close-others="oneAtATime">
+                            <accordion-group heading="Sünnipäevaline" is-open="status.isFirstOpen"
+                                             is-disabled="status.isFirstDisabled">
+                                Juhan Juurikas
+                            </accordion-group>
+                            <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+                                {{group.content}}
+                            </accordion-group>
+                            <accordion-group heading="Kingitused">
+
+
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Nimetus</th>
+                                        <th>Hind</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="item in items">
+                                        <td>{{items.name}}</td>
+                                        <td>{{items.price}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </table>
+                                <hr/>
+                                <p>Lisage uus kingitus</p>
+
+                                <input type="text" class="form-control" placeholder="Nimetus">
+                                <input type="text" class="form-control" placeholder="Hind">
+                                <button class="btn btn-default btn-sm" ng-click="addItem()">Lisa</button>
+                                <div>{{item}}</div>
+
+                                <!--<div ng-controller="ModalDemoCtrl">
+                                        <script type="text/ng-template" id="myModalContent.html">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title">I'm a modal!</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <ul>
+                                                    <li ng-repeat="item in items">
+                                                        <a ng-click="selected.item = item">{{ item }}</a>
+                                                    </li>
+                                                </ul>
+                                                Selected: <b>{{ selected.item }}</b>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-primary" ng-click="ok()">OK</button>
+                                                <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+                                            </div>
+                                        </script>
+
+                                        <button class="btn btn-default" ng-click="open()">Open me!</button>
+                                        <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
+                                        <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
+                                        <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+                                    </div>-->
+                            </accordion-group>
+                            <accordion-group is-open="status.open">
+                                <accordion-heading>
+                                    Asukoht <i class="pull-right glyphicon"
+                                               ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                                </accordion-heading>
+                                Akadeemia tee 45, Tallinn
+                            </accordion-group>
+                        </accordion>
+                    </div>
+
+                </tab>
+
+                <tab heading="Mari 35">
+                    <hr/>
+                    <div ng-controller="AccordionDemoCtrl">
+
+                        <accordion close-others="oneAtATime">
+                            <accordion-group heading="Sünnipäevaline" is-open="status.isFirstOpen"
+                                             is-disabled="status.isFirstDisabled">
+                                Mari Maasikas
+                            </accordion-group>
+                            <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+                                {{group.content}}
+                            </accordion-group>
+                            <accordion-group heading="Kingitused">
+                                <button class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>
+                                <div ng-repeat="item in items">{{item}}</div>
+                            </accordion-group>
+                            <accordion-group is-open="status.open">
+                                <accordion-heading>
+                                    Asukoht <i class="pull-right glyphicon"
+                                               ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                                </accordion-heading>
+                                Akadeemia tee 45, Tallinn
+                            </accordion-group>
+                        </accordion>
+                    </div>
+                </tab>
+            </tabset>
+        </div>
+
+    </div>
+
+    // 2 TAB 2        2 TAB 2
+    // ======================
+
+    <div ng-show="tabs.isSet(2)">
+
+        <div class="row">
+            <div class="navigator" ng-controller="CollapseDemoCtrl">
+                <div class="col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Uue ürituse loomine</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form>
+
+                                <div class="form-group">
+                                    <label for="name">Pealkiri</label>
+                                    <input type="text" ng-model="heading" class="form-control" id="exampleInputEmail1"
+                                           placeholder="Ürituse nimi">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="descrition">Ürituse kirjeldus</label>
+                                    <textarea class="form-control" ng-model="description" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="presents">Kingituste nimekiri</label>
+                                    <textarea class="form-control" ng-model="giftlist"
+                                              placeholder="Igale reale üks kingitus" rows="8"></textarea>
+                                </div>
+                                <button class="btn btn-primary">Lisa üritus</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Ürituse aja ja kuupäeva
+                        sisestamine
+                    </button>
+                    <hr>
+                    <div collapse="isCollapsed">
+                        <div class="well well-lg">
+
+                            <div ng-controller="DatepickerDemoCtrl">
+
+                                <!--  Chose date output
+                                        <pre>Valitud kuupäev: <em>{{dt | date:'fullDate' }}</em></pre>
+                                -->
+
+                                <h4>Valige kellaaeg ja kuupäev</h4>
+
+                                <div ng-controller="TimepickerDemoCtrl">
+
+                                    <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep"
+                                                minute-step="mstep" show-meridian="ismeridian"></timepicker>
+
+                                    <!-- Chosen time output 
+                                            <pre class="alert alert-info">Time is: {{mytime | date:'shortTime' }}</pre>
+                                    -->
+
+                                </div>
+
+                                <div style="display:inline-block; min-height:290px;">
+                                    <datepicker ng-model="dt" min-date="minDate" show-weeks="true"
+                                                class="well well-sm"></datepicker>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        // END TAB 2
+    </div>
+
+</section>
+<script>
+    var person = {
+        firstName: "John",
+        lastName: "Doe",
+        age: 46
+    };
+
+</script>
+</body>
+
+</html>

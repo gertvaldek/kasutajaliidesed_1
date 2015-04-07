@@ -199,15 +199,13 @@
     // ====================== -->
 
     <div ng-show="tabs.isSet(2)">
-
+    <div class="events">
+        <div class="panel panel-default">
+            <div class="panel-body">
         <div class="row">
-            <div class="events" ng-controller="CollapseDemoCtrl">
+            <div ng-controller="CollapseDemoCtrl">
                 <div class="col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Uue ürituse loomine</h3>
-                        </div>
-                        <div class="panel-body">
+
                             <form>
 
                                 <div class="form-group">
@@ -227,10 +225,35 @@
                                 </div>
                                 <button class="btn btn-primary">Lisa üritus</button>
                             </form>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="col-md-6">
+                    <div ng-controller="DatepickerDemoCtrl">
+
+                        <!--  Chose date output
+                                <pre>Valitud kuupäev: <em>{{dt | date:'fullDate' }}</em></pre>
+                        -->
+
+                        <h4>Valige kellaaeg ja kuupäev</h4>
+
+                        <div ng-controller="TimepickerDemoCtrl">
+
+                            <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep"
+                                        minute-step="mstep" show-meridian="ismeridian"></timepicker>
+
+                            <!-- Chosen time output
+                                    <pre class="alert alert-info">Time is: {{mytime | date:'shortTime' }}</pre>
+                            -->
+
+                        </div>
+
+                        <div style="display:inline-block; min-height:290px;">
+                            <datepicker ng-model="dt" min-date="minDate" show-weeks="true"
+                                        class="well well-sm"></datepicker>
+                        </div>
+                    </div>
+                    <!-- Collapse tab
+
                     <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Ürituse aja ja kuupäeva
                         sisestamine
                     </button>
@@ -238,34 +261,12 @@
                     <div collapse="isCollapsed">
                         <div class="well well-lg">
 
-                            <div ng-controller="DatepickerDemoCtrl">
-
-                                <!--  Chose date output
-                                        <pre>Valitud kuupäev: <em>{{dt | date:'fullDate' }}</em></pre>
-                                -->
-
-                                <h4>Valige kellaaeg ja kuupäev</h4>
-
-                                <div ng-controller="TimepickerDemoCtrl">
-
-                                    <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep"
-                                                minute-step="mstep" show-meridian="ismeridian"></timepicker>
-
-                                    <!-- Chosen time output 
-                                            <pre class="alert alert-info">Time is: {{mytime | date:'shortTime' }}</pre>
-                                    -->
-
-                                </div>
-
-                                <div style="display:inline-block; min-height:290px;">
-                                    <datepicker ng-model="dt" min-date="minDate" show-weeks="true"
-                                                class="well well-sm"></datepicker>
-                                </div>
-                            </div>
-
-
                         </div>
+                        -->
                     </div>
+                </div>
+            </div>
+        </div>
                 </div>
             </div>
         </div>

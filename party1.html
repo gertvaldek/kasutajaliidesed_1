@@ -1,0 +1,227 @@
+<html ng-app="ui.bootstrap.demo">
+
+<head>
+    <title>Sünnipäevad</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/party.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    <script src='js/lodash.js'></script>
+    <script src='js/index.js'></script>
+    <script src='js/angular-google-maps.min.js'></script>
+</head>
+
+<body>
+<section class="tabs" ng-controller="TabsController as tabs">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li role="presentation"><a href ng-click="tabs.setTab(1)">Üritused</a>
+                    </li>
+                    <li role="presentation"><a href ng-click="tabs.setTab(2)">Loo uus üritus</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="login.html">Logi välja</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- TAB 1            TAB 1
+       =====================  -->
+
+    <div ng-show="tabs.isSet(1)">
+        <div class="events" ng-controller="TabsDemoCtrl">
+
+
+
+
+            <tabset justified="true">
+                <tab heading="Info">
+
+                    <div ng-controller="AccordionDemoCtrl">
+                        <hr/>
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+
+                                    <div class="col-md-5">
+                                        <img src="images/party1.jpg" alt="Pidu 1" class="img-thumbnail"></div>
+                                    <div class="col-md-7">
+                                        <h3>Mihkli Sünnipäev <span class="label label-primary">22</span></h3>
+                                        <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 23. aprill 2015      <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> TTÜ Raamatukogu<hr/>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        <hr/>
+                                        <h4>Lisainfo <span class="label label-primary">22</span></h4>
+                                        <span class="glyphicon glyphicon-euro" aria-hidden="true"></span> EE241010010499900018
+
+
+
+
+                                    </div>
+
+                                </div>
+                            </div></div>
+                    </div>
+
+                </tab>
+
+                <tab heading="Osalejad">
+                    <hr/>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Märgi ennast osalejaks <span class="label label-primary">Nüüd ja kohe!</span></h4>
+                            <hr/>
+                                <form ng-controller="FrmController">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">Nimi</span>
+                                        <input ng-model="txtcomment" type="text" class="form-control"  aria-describedby="basic-addon1">
+                                    </div>
+                                    <br>
+                                    <button ng-click='btn_add();' type="button" class="btn btn-primary" >Märgi osalejaks</button>
+                                    <hr/>
+                                    <h4>Osalejad</h4>
+                                    <table class="table table-striped">
+
+                                        <tr ng-repeat="comnt in comment">
+                                        <td>{{ comnt }} <span href=""  style="float: right;" ng-click="remItem($index)" class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+
+                                    </tr>
+
+                                    </table>
+                            </form>
+
+                        </div>
+                        <div class="col-md-6">
+
+
+                        </div>
+                    </div>
+
+
+
+</div></div>
+                </tab>
+            </tabset>
+        </div>
+
+    </div>
+
+    <!-- 2 TAB 2        2 TAB 2
+    // ====================== -->
+
+    <div ng-show="tabs.isSet(2)">
+
+        <div class="row">
+            <div class="events" ng-controller="CollapseDemoCtrl">
+                <div class="col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Uue ürituse loomine</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form>
+
+                                <div class="form-group">
+                                    <label for="name">Pealkiri</label>
+                                    <input type="text" ng-model="heading" class="form-control" id="exampleInputEmail1"
+                                           placeholder="Ürituse nimi">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="descrition">Ürituse kirjeldus</label>
+                                    <textarea class="form-control" ng-model="description" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="presents">Kingituste nimekiri</label>
+                                    <textarea class="form-control" ng-model="giftlist"
+                                              placeholder="Igale reale üks kingitus" rows="8"></textarea>
+                                </div>
+                                <button class="btn btn-primary">Lisa üritus</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Ürituse aja ja kuupäeva
+                        sisestamine
+                    </button>
+                    <hr>
+                    <div collapse="isCollapsed">
+                        <div class="well well-lg">
+
+                            <div ng-controller="DatepickerDemoCtrl">
+
+                                <!--  Chose date output
+                                        <pre>Valitud kuupäev: <em>{{dt | date:'fullDate' }}</em></pre>
+                                -->
+
+                                <h4>Valige kellaaeg ja kuupäev</h4>
+
+                                <div ng-controller="TimepickerDemoCtrl">
+
+                                    <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep"
+                                                minute-step="mstep" show-meridian="ismeridian"></timepicker>
+
+                                    <!-- Chosen time output 
+                                            <pre class="alert alert-info">Time is: {{mytime | date:'shortTime' }}</pre>
+                                    -->
+
+                                </div>
+
+                                <div style="display:inline-block; min-height:290px;">
+                                    <datepicker ng-model="dt" min-date="minDate" show-weeks="true"
+                                                class="well well-sm"></datepicker>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END TAB 2 -->
+    </div>
+
+</section>
+<script type="text/javascript">
+
+    // Comment & Attend section code
+
+    function FrmController($scope) {
+        $scope.comment = [];
+        $scope.btn_add = function() {
+            if($scope.txtcomment !=''){
+                $scope.comment.push($scope.txtcomment);
+                $scope.txtcomment = "";
+            }
+        }
+
+        $scope.remItem = function($index) {
+            $scope.comment.splice($index, 1);
+        }
+    }
+</script>
+</body>
+
+</html>

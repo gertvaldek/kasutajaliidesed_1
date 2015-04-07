@@ -5,12 +5,11 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/party.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
     <script src="js/ui-bootstrap-tpls-0.12.1.min.js"></script>
-    <script src='js/lodash.js'></script>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCasRZV40wstmFA-Tu6SbYEgiZneL1uLFs"></script>
     <script src='js/index.js'></script>
-    <script src='js/angular-google-maps.min.js'></script>
 </head>
 
 <body>
@@ -49,7 +48,8 @@
     <div ng-show="tabs.isSet(1)">
         <div class="events" ng-controller="TabsDemoCtrl">
 
-
+            <a href="index.html" <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>TAGASI nupp siia</a>
+            <div id="map-canvas"></div>
 
 
             <tabset justified="true">
@@ -221,6 +221,18 @@
             $scope.comment.splice($index, 1);
         }
     }
+
+    // Google Maps Api
+
+    function initialize() {
+        var mapOptions = {
+            center: { lat: -34.397, lng: 150.644},
+            zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 </body>
 
